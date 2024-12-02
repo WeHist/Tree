@@ -8,13 +8,11 @@ class HeapTree {
         heap = new ArrayList<>();
     }
 
-    // Метод для добавления элемента в кучу
     public void add(int value) {
         heap.add(value);
         siftUp(heap.size() - 1);
     }
 
-    // Метод для удаления элемента по значению
     public void remove(int value) {
         int index = heap.indexOf(value);
         if (index == -1) {
@@ -23,7 +21,6 @@ class HeapTree {
         removeAt(index);
     }
 
-    // Метод для удаления элемента по индексу
     private void removeAt(int index) {
         int lastIndex = heap.size() - 1;
         if (index == lastIndex) {
@@ -36,12 +33,10 @@ class HeapTree {
         }
     }
 
-    // Метод для поиска элемента в куче
     public boolean contains(int value) {
         return heap.contains(value);
     }
 
-    // Вспомогательный метод для "подъема" элемента
     private void siftUp(int index) {
         int value = heap.get(index);
         while (index > 0) {
@@ -55,8 +50,7 @@ class HeapTree {
         }
         heap.set(index, value);
     }
-
-    // Вспомогательный метод для "опускания" элемента
+    
     private void siftDown(int index) {
         int value = heap.get(index);
         int lastIndex = heap.size() - 1;
@@ -80,40 +74,29 @@ class HeapTree {
         heap.set(index, value);
     }
 
-    // Метод для получения размера кучи
     public int size() {
         return heap.size();
     }
 
-    // Метод для проверки, пуста ли куча
     public boolean isEmpty() {
         return heap.isEmpty();
     }
 
-    // Пример использования
     public static void main(String[] args) {
         HeapTree heapTree = new HeapTree();
-
-        // Добавление элементов
+        
         heapTree.add(10);
         heapTree.add(5);
         heapTree.add(20);
         heapTree.add(3);
         heapTree.add(8);
 
-        // Проверка наличия элементов
         System.out.println("Contains 5: " + heapTree.contains(5)); // true
         System.out.println("Contains 15: " + heapTree.contains(15)); // false
-
-        // Удаление элемента
         System.out.println("Removing 5");
         heapTree.remove(5);
         System.out.println("Contains 5: " + heapTree.contains(5)); // false
-
-        // Проверка размера кучи
         System.out.println("Current size of heap: " + heapTree.size()); // 4
-
-        // Удаление еще одного элемента
         System.out.println("Removing 10");
         heapTree.remove(10);
         System.out.println("Current size of heap after removing 10: " + heapTree.size()); // 3
